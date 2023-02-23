@@ -21,4 +21,4 @@ Qualys has extensive data of hosts and vulnerabilities detected on them, and thi
 
  - To know more about this integration, please contact your Technical Account Manager.  
 
- - To know more on how to setup and use this integration, please read the [user guide](link-to-user-guide-here).
+ - To know more on how to setup and use this integration, please read the [user guide](https://www.qualys.com/docs/qualys-jira-connector-user-guide.pdf).
