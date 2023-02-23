@@ -1,0 +1,24 @@
+version: "3"
+services:
+    qualys-client-service:
+        image: qualys/qualys-client-for-jira-integration:1.0.0
+        networks:
+            - qualys-jira-connector
+        volumes:
+            - qualys-jira-volume:/opt/qualys/common/jiraconnector/
+             
+  
+    jira-client-service:
+        image: qualys/jira-client-for-jira-integration:1.0.0
+        networks:
+            - qualys-jira-connector
+        volumes:
+            - qualys-jira-volume:/opt/qualys/common/jiraconnector/
+        depends_on:
+            - qualys-client-service
+ 
+networks:
+    qualys-jira-connector:
+     
+volumes:
+  qualys-jira-volume:
