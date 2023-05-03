@@ -1,7 +1,7 @@
 version: "3"
 services:
     qualys-client-service:
-        image: qualys/qualys-client-for-jira-integration:1.0.0
+        image: qualys/qualys-client-for-jira-integration:1.0.1
         networks:
             - qualys-jira-connector
         volumes:
@@ -9,7 +9,7 @@ services:
              
   
     jira-client-service:
-        image: qualys/jira-client-for-jira-integration:1.0.0
+        image: qualys/jira-client-for-jira-integration:1.0.1
         networks:
             - qualys-jira-connector
         volumes:
