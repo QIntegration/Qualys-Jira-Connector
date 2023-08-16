@@ -33,6 +33,7 @@ services:
 
 networks:
     qualys-jira-connector:
+        attachable: false
 
 volumes:
     qualys-jira-volume:
