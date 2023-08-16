@@ -7,13 +7,14 @@ services:
         volumes:
             - qualys-jira-volume:/opt/qualys/common/jiraconnector/
         environment:
-            - SPRING_REDIS_HOST=#vm_ip_address
+            - SPRING_REDIS_HOST=qualys-jira-redis-client-service
             - SPRING_REDIS_PORT=6379
             - SPRING_REDIS_USER=${SPRING_REDIS_USER:-default}
             - SPRING_REDIS_PASSWORD=${SPRING_REDIS_PASSWORD:-JiraConnectorRedisDB}
 
     redis-client-service:
         image: qualys/redis-client-for-jira-integration:latest
+        container_name: qualys-jira-redis-client-service
         networks:
             - qualys-jira-connector
         ports:
