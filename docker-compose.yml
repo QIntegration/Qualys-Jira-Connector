@@ -17,8 +17,6 @@ services:
         container_name: qualys-jira-redis-client-service
         networks:
             - qualys-jira-connector
-        ports:
-            - 6379:6379
         volumes:
             - qualys-jira-volume:/opt/qualys/common/jiraconnector/
 
