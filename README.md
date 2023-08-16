@@ -22,3 +22,6 @@ Qualys has extensive data of hosts and vulnerabilities detected on them, and thi
  - To know more about this integration, please contact your Technical Account Manager.  
 
  - To know more on how to setup and use this integration, please read the [user guide](https://www.qualys.com/docs/qualys-jira-connector-user-guide.pdf).
+
+## Upgrade
+- To upgrade the existing Jira connector to the latest version, please read and follow the instructions given in the "Frequently Asked Questions" section of the [user guide](https://www.qualys.com/docs/qualys-jira-connector-user-guide.pdf).
