@@ -1,7 +1,7 @@
-version: "3.1"
+version: "3.2"
 services:
     qualys-client-service:
-        image: qualys/qualys-client-for-jira-integration:1.1.0
+        image: qualys/qualys-client-for-jira-integration:1.2.0
         networks:
             - qualys-jira-connector
         volumes:
@@ -13,7 +13,7 @@ services:
             - SPRING_REDIS_PASSWORD=JiraConnectorRedisDB
 
     redis-client-service:
-        image: qualys/redis-client-for-jira-integration:latest
+        image: qualys/redis-client-for-jira-integration:1.2.0
         networks:
             - qualys-jira-connector
         ports:
@@ -22,7 +22,7 @@ services:
           - qualys-jira-volume:/opt/qualys/common/jiraconnector/     
 
     jira-client-service:
-        image: qualys/jira-client-for-jira-integration:1.1.0
+        image: qualys/jira-client-for-jira-integration:1.2.0
         networks:
             - qualys-jira-connector
         volumes:
