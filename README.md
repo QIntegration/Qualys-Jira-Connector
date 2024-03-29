@@ -23,8 +23,8 @@ Qualys has extensive data of hosts and vulnerabilities detected on them, and thi
 
  - To know more on how to setup and use this integration, please read the [user guide](https://www.qualys.com/docs/qualys-jira-connector-user-guide.pdf).
 
-## Upgrade
-# Intructions to upgrade the App to v1.3.1.1
+# Upgrade
+## Intructions to upgrade the App to v1.3.1.1
 
 For v1.3.1.1, we have introduced additional parameters for configuring connection retries and timeouts to the Jira connector in case of 429 error scenarios.
 The newly introduced parameters in config.json are,
@@ -38,7 +38,7 @@ To Upgrade to v1.3.1.1 from v1.3.1 follow the instructions listed below,
  3. The newly introduced parameters described above are enabled with their default values if not manually updated in config.json. See [Configuration](https://docs.mp02.eng.sjc01.qualys.com/en/integration/jira_connector/#t=get_started%2Fconfiguration.htm) section in user guide to learn more about the parameters and their default values. To modify the values, add these parameters to the config.json file and set your preferred value.
  4. Restart your containers.
 
-# Intructions to upgrade the App to v1.3.1
+## Intructions to upgrade the App to v1.3.1
  
 For v1.3.1, we have introduced 
 - 'priorityMapping' parameter to all the ticketing schemes to map the issues created in Jira with appropriate priority based on their risk scores or severity level. 
