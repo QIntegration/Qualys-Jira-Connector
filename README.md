@@ -34,7 +34,7 @@ The newly introduced parameters in config.json are,
     
 To Upgrade to v1.3.1.1 from v1.3.1 follow the instructions listed below, 
  1. Stop your containers
- 2. Update the latest images in docker-compose.yml. You can get the latest [yaml] (https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml)
+ 2. Update the latest images in docker-compose.yml. You can get the latest [yaml](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml)
  3. The newly introduced parameters described above are enabled with their default values if not manually updated in config.json. See [Configuration](https://docs.mp02.eng.sjc01.qualys.com/en/integration/jira_connector/#t=get_started%2Fconfiguration.htm) section in user guide to learn more about the parameters and their default values. To modify the values, add these parameters to the config.json file and set your preferred value.
  4. Restart your containers.
 
