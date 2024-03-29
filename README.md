@@ -24,6 +24,9 @@ Qualys has extensive data of hosts and vulnerabilities detected on them, and thi
  - To know more on how to setup and use this integration, please read the [user guide](https://www.qualys.com/docs/qualys-jira-connector-user-guide.pdf).
 
 # Upgrade
+
+Note: These upgrade instructions are provided in incremental manner. If you are using really old version of Jira connector, to make sure the connnector runs smoothly please check the upgrade instruction for other versions in [guide](https://docs.qualys.com/en/integration/jira_connector/#t=upgrade_connector_app%2Fupgrade_the_app.htm&rhsearch=upgrade) as well. This will prevent potential upgrade issues due to missing changes in config/templates.	
+
 ## Intructions to upgrade the App to v1.3.1.1
 
 For v1.3.1.1, we have introduced additional parameters for configuring connection retries and timeouts to the Jira connector in case of 429 error scenarios.
@@ -147,5 +150,3 @@ priorityMapping per ticketing scheme -
                 }
             }
 ```
-           
-Note: These upgrade instructions are provided in incremental manner. If you are using really old version of Jira connector, to make sure the connnector runs smoothly please check the upgrade instruction for other versions in guide as well. This will prevent potential upgrade issues due to missing changes in config/templates. https://docs.qualys.com/en/integration/jira_connector/#t=upgrade_connector_app%2Fupgrade_the_app.htm&rhsearch=upgrade		
