@@ -156,7 +156,7 @@ Steps to Upgrade to v1.3.2,
 1. Stop your containers
 2. Update the latest images in docker-compose.yml. You can get the latest docker-compose.yml [here](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml).
 3. Update the Ticketing template file with 1.3.2 Ticketing template file. You can get the latest Ticketing files from.
-[GitHub](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml)
+[GitHub]([https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml](https://github.com/QIntegration/Qualys-Jira-Connector/tree/main/1.3.2%20Ticketing%20templates))
 
 In v1.3.2, we have added support to handle mandatory custom fields of type - label & Select List (Single & multi choice), Number, Component system field, Paragraph, Read Only, Short text (plain text only). You can set mandatory field in any Ticketing Template.
 
