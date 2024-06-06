@@ -1,0 +1,177 @@
+{
+  "template": {
+    "metadata": {
+      "moduleName": "VMDR",
+      "returnFields": ["summary", "key"],
+      "operationField": "${STATUS}",
+      "projectKey": "${PROJECT_KEY}",
+      "operationMappings": {
+        "New": "open",
+        "Active": "open",
+        "Fixed": "close",
+        "Re-Opened": "open",
+        "New/Ignored":"close",
+        "Active/Ignored":"close",
+        "Fixed/Ignored":"close",
+        "Re-Opened/Ignored":"close"
+      },
+      "workflowMappings": {
+        "New": "Open",
+        "Active": "Open",
+        "Fixed": "Closed",
+        "Re-Opened": "Reopened",
+        "New/Ignored":"Closed",
+        "Active/Ignored":"Closed",
+        "Fixed/Ignored":"Closed",
+        "Re-Opened/Ignored":"Closed"
+      },
+      "priorityMapping": {
+        "matchWith": "${QDS.content}",
+        "criteria": {
+          "Highest": "90-100",
+          "High": "70-89",
+          "Medium": "40-69",
+          "Low": "1-39"
+        }
+      }
+    },
+    "payload": {
+      "ticketKey": "null",
+      "issueType": "Host Vulnerability",
+      "summary": "QID: ${QID} : ${VULN.TITLE}",
+      "description": "Host details: IP ${IP}, DNS name : ${DNS} Vulnerability details: ${VULN.TITLE}",
+      "comment": "Vulnerability last found on host ID ${ID} at ${LAST_FOUND_DATETIME}",
+      "labels": [
+        "qualys-host-${ID}",
+        "qid-${QID}",
+        "port-${PORT}"
+      ],
+      "custom_fields": {
+        "Host ID": {
+          "value": "${ID}",
+          "customFieldId": ""
+        },
+        "Asset ID": {
+          "value": "${ASSET_ID}",
+          "customFieldId": ""
+        },
+        "IP": {
+          "value": "${IP}",
+          "customFieldId": ""
+        },
+        "IPV6": {
+          "value": "${IPV6}",
+          "customFieldId": ""
+        },
+        "Detection Status": {
+          "value": "${STATUS}",
+          "customFieldId": ""
+        },
+        "Tracking Method": {
+          "value": "${TRACKING_METHOD}",
+          "customFieldId": ""
+        },
+        "OS": {
+          "value": "${OS}",
+          "customFieldId": ""
+        },
+        "Last Scan Datetime": {
+          "value": "${LAST_SCAN_DATETIME}",
+          "customFieldId": ""
+        },
+        "Last VM Scanned Date": {
+          "value": "${LAST_VM_SCANNED_DATE}",
+          "customFieldId": ""
+        },
+        "Asset Tag": {
+          "value": "${TAGS}",
+          "customFieldId": ""
+        },
+        "TruRisk Score": {
+          "value": "${TRURISK_SCORE}",
+          "customFieldId": ""
+        },
+        "Asset Criticality Score": {
+          "value": "${ASSET_CRITICALITY_SCORE}",
+          "customFieldId": ""
+        },
+        "QID": {
+          "value": "${QID}",
+          "customFieldId": ""
+        },
+        "Port": {
+          "value": "${PORT}",
+          "customFieldId": ""
+        },
+        "Severity": {
+          "value": "${VULN.SEVERITY_LEVEL}",
+          "customFieldId": ""
+        },
+        "Vuln Type": {
+          "value": "${VULN.VULN_TYPE}",
+          "customFieldId": ""
+        },
+        "Patchable": {
+          "value": "${VULN.PATCHABLE}",
+          "customFieldId": ""
+        },
+        "PCI Flag": {
+          "value": "${VULN.PCI_FLAG}",
+          "customFieldId": ""
+        },
+        "Vuln Category": {
+          "value": "${VULN.CATEGORY}",
+          "customFieldId": ""
+        },
+        "Published Datetime": {
+          "value": "${VULN.PUBLISHED_DATETIME}",
+          "customFieldId": ""
+        },
+        "CVSS Base": {
+          "value": "${VULN.CVSS_BASE}",
+          "customFieldId": ""
+        },
+        "CVSS Temporal": {
+          "value": "${VULN.CVSS_TEMPORAL}",
+          "customFieldId": ""
+        },
+        "CVSS V3 Base": {
+          "value": "${VULN.CVSS_V3_BASE}",
+          "customFieldId": ""
+        },
+        "CVSS V3 Temporal": {
+          "value": "${VULN.CVSS_V3_TEMPORAL}",
+          "customFieldId": ""
+        },
+        "Last Service Modification Datetime": {
+          "value": "${VULN.LAST_SERVICE_MODIFICATION_DATETIME}",
+          "customFieldId": ""
+        },
+        "CVEs": {
+          "value": "${VULN.CVES}",
+          "customFieldId": ""
+        },
+        "Diagnosis": {
+          "value": "${VULN.DIAGNOSIS}",
+          "customFieldId": ""
+        },
+        "Consequence": {
+          "value": "${VULN.CONSEQUENCE}",
+          "customFieldId": ""
+        },
+        "Solution": {
+          "value": "${VULN.SOLUTION}",
+          "customFieldId": ""
+        },
+        "QDS": {
+          "value": "${QDS.content}",
+          "customFieldId": ""
+        },
+        "Primary Key": {
+          "value": "Host ID:${ID}-QID:${QID}-Port:${PORT}",
+          "customFieldId": ""
+        }
+      }
+    }
+  }
+}

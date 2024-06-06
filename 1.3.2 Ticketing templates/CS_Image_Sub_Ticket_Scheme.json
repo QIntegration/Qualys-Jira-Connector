@@ -1,0 +1,207 @@
+{
+    "template": {
+        "metadata": {
+            "moduleName": "CS-Image",
+            "returnFields": ["summary", "key"],
+            "operationField": "${imageStatus}",
+            "projectKey": "${PROJECT_KEY}",
+            "jiraTicketAction": "${jiraTicketAction}",
+            "operationMappings": {
+                "Active": "openDiff",
+                "Fixed": "closeAll"
+            },
+            "workflowMappings": {
+                "Active": "Open",
+                "Fixed": "Closed"
+            },
+            "priorityMapping": {
+                "parent":{
+                    "matchWith": "Jira default",
+                    "criteria": {}
+                },
+                "relatedTicket":{
+                    "matchWith": "${vuln.severity}",
+                    "criteria": {
+                        "Highest": 5,
+                        "High": 4,
+                        "Medium": 3,
+                        "Low": 2,
+                        "Lowest": 1
+                    }
+                }
+            }
+        },
+        "payload": {
+            "parent": {
+                "ticketKey": "null",
+                "issueType": "Vulnerable Image",
+                "summary": "Registry: ${imageRegistry}, Repository: ${imageRepository}",
+                "description": "Image details:\nRepository Name: ${imageRepository},\nRegistry Name: ${imageRegistry},\nImage Tags: ${imageTags},\nImage SHA: ${sha},\nImage Id: ${imageId},\nSize: ${size},\nDocker version: ${dockerVersion},\nOS Name: ${operatingSystem},\nCreated on: ${created},\nScan Types: ${scanTypes},\nAuthor: ${author},\nOther registry names: ${otherImageRegistry},\nOther repository names: ${otherImageRepository}",
+                "labels": ["repository-${imageRepository}", "registry-${imageRegistry}"],
+                "custom_fields": {
+                    "Repository Name": {
+                        "value":"${imageRepository}",
+                        "customFieldId": ""
+                    },
+                    "Registry Name": {
+                        "value":"${imageRegistry}",
+                        "customFieldId": ""
+                    },
+                    "Image Tags": {
+                        "value":"${imageTags}",
+                        "customFieldId": ""
+                    },
+                    "OS Name": {
+                        "value":"${operatingSystem}",
+                        "customFieldId": ""
+                    },
+                    "Image SHA:": {
+                        "value":"${sha}",
+                        "customFieldId": ""
+                    },
+                    "Image Id:": {
+                        "value":"${imageId}",
+                        "customFieldId": ""
+                    },
+                    "Image Created On": {
+                        "value":"${created}",
+                        "customFieldId": ""
+                    },
+                    "Image Updated On": {
+                        "value":"${updated}",
+                        "customFieldId": ""
+                    },
+                    "Last Scanned": {
+                        "value":"${lastScanned}",
+                        "customFieldId": ""
+                    },
+                    "Total Vulns": {
+                        "value":"${totalVulCount}",
+                        "customFieldId": ""
+                    },
+                    "DockerHub Official": {
+                        "value":"${isDockerHubOfficial}",
+                        "customFieldId": ""
+                    },
+                    "Scan Types": {
+                        "value":"${scanTypes}",
+                        "customFieldId": ""
+                    },
+                    "Associated Hosts": {
+                        "value":"${associatedHosts}",
+                        "customFieldId": ""
+                    },
+                    "Primary Key": {
+                        "value":"Repository:${imageRepository}-Registry:${imageRegistry}",
+                        "customFieldId": ""
+                    }
+                }
+            },
+            "relatedTicket": {
+                "ticketKey": "null",
+                "summary": "Qualys QID ${vuln.qid}:${vuln.title} found on port number ${vuln.port}",
+                "issueType": "Subticket Image Vulnerability",
+                "description": "Vulnerability details: ${vuln.title}\nVulnerability Result:${vuln.result}",
+                "labels": ["qid-${vuln.qid}", "port-${vuln.port}"],
+                "custom_fields": {
+                    "QID": {
+                        "value":"${vuln.qid}",
+                        "customFieldId": ""
+                    },
+                    "Port": {
+                        "value":"${vuln.port}",
+                        "customFieldId": ""
+                    },
+                    "Published Date": {
+                        "value":"${vuln.published}",
+                        "customFieldId": ""
+                    },
+                    "Vulnerable Software": {
+                        "value":"${vuln.softwares}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Detection Status": {
+                        "value":"${vuln.status}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Severity": {
+                        "value":"${vuln.severity}",
+                        "customFieldId": ""
+                    },
+                    "Vuln Type": {
+                        "value":"${vuln.typeDetected}",
+                        "customFieldId": ""
+                    },
+                    "Scan Type": {
+                        "value":"${vuln.scanType}",
+                        "customFieldId": ""
+                    },
+                    "Patch Available": {
+                        "value":"${vuln.patchAvailable}",
+                        "customFieldId": ""
+                    },
+                    "Discovery Method": {
+                        "value":"${vuln.discoveryType}",
+                        "customFieldId": ""
+                    },
+                    "Authentication": {
+                        "value":"${vuln.authType}",
+                        "customFieldId": ""
+                    },
+                    "Supported Apps": {
+                        "value":"${vuln.supportedBy}",
+                        "customFieldId": ""
+                    },
+                    "Category": {
+                        "value":"${vuln.category}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVEs": {
+                        "value":"${vuln.cveids}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv2 Base": {
+                        "value":"${vuln.cvssInfo.baseScore}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv2 Temporal": {
+                        "value":"${vuln.cvssInfo.temporalScore}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported Access Vector": {
+                        "value":"${vuln.cvssInfo.accessVector}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv3.1 Base": {
+                        "value":"${vuln.cvss3Info.baseScore}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv3.1 Temporal": {
+                        "value":"${vuln.cvss3Info.temporalScore}",
+                        "customFieldId": ""
+                    },
+                    "Diagnosis": {
+                        "value":"${vuln.diagnosis}",
+                        "customFieldId": ""
+                    },
+                    "Consequence": {
+                        "value":"${vuln.consequence}",
+                        "customFieldId": ""
+                    },
+                    "Impact": {
+                        "value":"${vuln.impact}",
+                        "customFieldId": ""
+                    },
+                    "Solution": {
+                        "value":"${vuln.solution}",
+                        "customFieldId": ""
+                    },
+                    "Primary Key": {
+                        "value":"QID:${vuln.qid}-Port:${vuln.port}",
+                        "customFieldId": ""
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,206 @@
+{
+    "template": {
+        "metadata": {
+            "moduleName": "CS-Container",
+            "returnFields": ["summary", "key"],
+            "operationField": "${state}",
+            "projectKey": "${PROJECT_KEY}",
+            "operationMappings": {
+                "CREATED": "linkDiff",
+                "RUNNING": "linkDiff",
+                "STOPPED": "linkDiff",
+                "PAUSED": "linkDiff",
+                "UNKNOWN": "unlinkAll",
+                "DELETED": "unlinkAll"
+            },
+            "workflowMappings": {
+                "CREATED": "Open",
+                "RUNNING": "Open",
+                "STOPPED": "Open",
+                "PAUSED": "Open",
+                "UNKNOWN": "Closed",
+                "DELETED": "Closed"
+            },
+            "priorityMapping": {
+                "parent":{
+                    "matchWith": "Jira default",
+                    "criteria": {}
+                },
+                "relatedTicket":{
+                    "matchWith": "${vuln.severity}",
+                    "criteria": {
+                        "Highest": 5,
+                        "High": 4,
+                        "Medium": 3,
+                        "Low": 2,
+                        "Lowest": 1
+                    }
+                }
+            }
+        },
+        "payload": {
+            "parent": {
+                "ticketKey": "null",
+                "issueType": "Link Vulnerable Container",
+                "summary": "Container ${name} (Id: ${containerId}) has vulnerabilities",
+                "description": "Container details:\nContainer Id: ${containerId},\nContainer Name: ${name},\nImage Id: ${imageId},\nCommand: ${command},\nHost Name:${host.hostname},\nIP Address:${host.ipAddress},\nContainer SHA:${sha},\nOS Name:${operatingSystem},\nPrivileged:${privileged}",
+                "labels": ["container-id-${containerId}", "container-sha-${sha}"],
+                "custom_fields": {
+                    "Container Id": {
+                        "value":"${containerId}",
+                        "customFieldId": ""
+                    },
+                    "Container Name": {
+                        "value":"${name}",
+                        "customFieldId": ""
+                    },
+                    "Image Id": {
+                        "value":"${imageId}",
+                        "customFieldId": ""
+                    },
+                    "Host Name": {
+                        "value":"${host.hostname}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported IP Address": {
+                        "value":"${host.ipAddress}",
+                        "customFieldId": ""
+                    },
+                    "Container SHA:": {
+                        "value":"${sha}",
+                        "customFieldId": ""
+                    },
+                    "OS Name": {
+                        "value":"${operatingSystem}",
+                        "customFieldId": ""
+                    },
+                    "State": {
+                        "value":"${state}",
+                        "customFieldId": ""
+                    },
+                    "Container Created On": {
+                        "value":"${created}",
+                        "customFieldId": ""
+                    },
+                    "Container Updated On": {
+                        "value":"${updated}",
+                        "customFieldId": ""
+                    },
+                    "Container Last Scanned": {
+                        "value":"${lastScanned}",
+                        "customFieldId": ""
+                    },
+                    "Drift": {
+                        "value":"${isDrift}",
+                        "customFieldId": ""
+                    },
+                    "Primary Key": {
+                        "value":"Container SHA:${sha}",
+                        "customFieldId": ""
+                    }
+                }
+            },
+            "relatedTicket": {
+                "ticketKey": "null",
+                "summary": "Qualys QID ${vuln.qid}:${vuln.title} found on port number ${vuln.port}",
+                "issueType": "CS Link Vulnerability",
+                "description": "Vulnerability details: ${vuln.title}\nVulnerability Result:${vuln.result}",
+                "labels": ["qid-${vuln.qid}", "port-${vuln.port}"],
+                "custom_fields": {
+                    "QID": {
+                        "value":"${vuln.qid}",
+                        "customFieldId": ""
+                    },
+                    "Port": {
+                        "value":"${vuln.port}",
+                        "customFieldId": ""
+                    },
+                    "Vulnerable Software": {
+                        "value":"${vuln.softwares}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Detection Status": {
+                        "value":"${vuln.status}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Severity": {
+                        "value":"${vuln.severity}",
+                        "customFieldId": ""
+                    },
+                    "Vuln Type": {
+                        "value":"${vuln.typeDetected}",
+                        "customFieldId": ""
+                    },
+                    "Patch Available": {
+                        "value":"${vuln.patchAvailable}",
+                        "customFieldId": ""
+                    },
+                    "Discovery Method": {
+                        "value":"${vuln.discoveryType}",
+                        "customFieldId": ""
+                    },
+                    "Authentication": {
+                        "value":"${vuln.authType}",
+                        "customFieldId": ""
+                    },
+                    "Supported Apps": {
+                        "value":"${vuln.supportedBy}",
+                        "customFieldId": ""
+                    },
+                    "Category": {
+                        "value":"${vuln.category}",
+                        "customFieldId": ""
+                    },
+                    "Published Date":{
+                        "value": "${vuln.published}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVEs": {
+                        "value":"${vuln.cveids}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv2 Base": {
+                        "value":"${vuln.cvssInfo.baseScore}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv2 Temporal": {
+                        "value":"${vuln.cvssInfo.temporalScore}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported Access Vector": {
+                        "value":"${vuln.cvssInfo.accessVector}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv3.1 Base": {
+                        "value":"${vuln.cvss3Info.baseScore}",
+                        "customFieldId": ""
+                    },
+                    "Qualys Reported CVSSv3.1 Temporal": {
+                        "value":"${vuln.cvss3Info.temporalScore}",
+                        "customFieldId": ""
+                    },
+                    "Diagnosis": {
+                        "value":"${vuln.diagnosis}",
+                        "customFieldId": ""
+                    },
+                    "Consequence": {
+                        "value":"${vuln.consequence}",
+                        "customFieldId": ""
+                    },
+                    "Solution": {
+                        "value":"${vuln.solution}",
+                        "customFieldId": ""
+                    },
+                    "Impact": {
+                        "value":"${vuln.impact}",
+                        "customFieldId": ""
+                    },
+                    "Primary Key": {
+                        "value":"QID:${vuln.qid}-Port:${vuln.port}",
+                        "customFieldId": ""
+                    }
+                }
+            }
+        }
+    }
+}

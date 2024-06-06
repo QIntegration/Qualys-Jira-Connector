@@ -1,0 +1,167 @@
+{
+  "template": {
+    "metadata": {
+      "moduleName": "WAS",
+      "returnFields": ["summary", "key"],
+      "operationField": "${STATUS}",
+      "projectKey": "${PROJECT_KEY}",
+      "operationMappings": {
+        "NEW": "link",
+        "ACTIVE": "link",
+        "FIXED": "unlink",
+        "REOPENED": "link",
+        "PROTECTED": "link"
+      },
+      "workflowMappings": {
+        "NEW": "Open",
+        "ACTIVE": "Open",
+        "FIXED": "Closed",
+        "REOPENED": "Reopened",
+        "PROTECTED": "Open"
+      },
+      "priorityMapping": {
+        "parent":{
+          "matchWith": "Jira default",
+          "criteria": {}
+        },
+        "relatedTicket":{
+          "matchWith": "${SEVERITY}",
+          "criteria": {
+            "Highest": 5,
+            "High": 4,
+            "Medium": 3,
+            "Low": 2,
+            "Lowest": 1
+          }
+        }
+      }
+    },
+    "payload": {
+      "parent": {
+        "ticketKey": "null",
+        "issueType": "Vulnerable Web App",
+        "summary": "Web App ${WEBAPP_NAME} (Qualys Web App ID : ${WEBAPP_ID}) is vulnerable",
+        "description": "Web App details : Web App ID : ${WEBAPP_ID} ,Web App Name: ${WEBAPP_NAME}, Web App URL: ${WEBAPP_URL}",
+        "comment": "Vulnerability found on Web App Id - ${WEBAPP_ID}",
+        "labels": ["qualys-Web-App-Id-${WEBAPP_ID}"],
+        "custom_fields": {
+          "Web App ID": {
+            "value":"${WEBAPP_ID}",
+            "customFieldId": ""
+          },
+          "Web App Name": {
+            "value":"${WEBAPP_NAME}",
+            "customFieldId": ""
+          },
+          "Web App URL": {
+            "value":"${WEBAPP_URL}",
+            "customFieldId": ""
+          },
+          "Primary Key": {
+            "value":"Web App ID:${WEBAPP_ID}",
+            "customFieldId": ""
+          }
+        }
+      },
+      "relatedTicket": {
+        "ticketKey": "null",
+        "summary": "Qualys QID ${QID} with Finding ID ${ID} is detected",
+        "issueType": "Vulnerable QID",
+        "description": "",
+        "attachment": "Result :\n ${RESULT}",
+        "comment": "Vulnerability last found on Finding ID ${ID} at ${LAST_DETECTED_DATE}",
+        "labels": ["Finding-ID-${ID}", "QID-${QID}"],
+        "custom_fields": {
+          "Finding Source": {
+            "value": "${FINDING_TYPE}",
+            "customFieldId": ""
+          },
+          "Severity": {
+            "value": "${SEVERITY}",
+            "customFieldId": ""
+          },
+          "Web App ID": {
+            "value": "${WEBAPP_ID}",
+            "customFieldId": ""
+          },
+          "Type": {
+            "value": "${ISSUE_TYPE}",
+            "customFieldId": ""
+          },
+          "QID": {
+            "value": "${QID}",
+            "customFieldId": ""
+          },
+          "Detection type": {
+            "value": "${DETECTION_TYPE}",
+            "customFieldId": ""
+          },
+          "OWASP": {
+            "value": "${OWASP}",
+            "customFieldId": ""
+          },
+          "CWE": {
+            "value": "${CWE}",
+            "customFieldId": ""
+          },
+          "First detected": {
+            "value": "${FIRST_DETECTED_DATE}",
+            "customFieldId": ""
+          },
+          "Last detected": {
+            "value": "${LAST_DETECTED_DATE}",
+            "customFieldId": ""
+          },
+          "Times detected": {
+            "value": "${TIMES_DETECTED}",
+            "customFieldId": ""
+          },
+          "Threat": {
+            "value": "${VULN.DIAGNOSIS}",
+            "customFieldId": ""
+          },
+          "Impact": {
+            "value": "${VULN.CONSEQUENCE}",
+            "customFieldId": ""
+          },
+          "Solution": {
+            "value": "${VULN.SOLUTION}",
+            "customFieldId": ""
+          },
+          "Primary Key": {
+            "value": "Finding ID:${ID}-QID:${QID}",
+            "customFieldId": ""
+          },
+          "Finding ID": {
+            "value": "${ID}",
+            "customFieldId": ""
+          },
+          "Unique ID": {
+            "value": "${UNIQUE_ID}",
+            "customFieldId": ""
+          },
+          "CVSS Base": {
+            "value": "${VULN.CVSS_BASE}",
+            "customFieldId": ""
+          },
+          "CVSS Temporal": {
+            "value": "${VULN.CVSS_TEMPORAL}",
+            "customFieldId": ""
+          },
+          "CVSS V3 Base": {
+            "value": "${VULN.CVSS_V3_BASE}",
+            "customFieldId": ""
+          },
+          "CVSS V3 Temporal": {
+            "value": "${VULN.CVSS_V3_TEMPORAL}",
+            "customFieldId": ""
+          },
+          "CVSS V3 Attack Vector": {
+            "value": "${VULN.CVSS_V3_ATTACK_VECTOR}",
+            "customFieldId": ""
+          }
+        }
+      }
+    }
+  }
+}
