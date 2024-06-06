@@ -150,3 +150,57 @@ priorityMapping per ticketing scheme -
                 }
             }
 ```
+
+## Intructions to upgrade the App to v1.3.2
+Steps to Upgrade to v1.3.2,
+1. Stop your containers
+2. Update the latest images in docker-compose.yml. You can get the latest docker-compose.yml [here](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml).
+3. Update the Ticketing template file with 1.3.2 Ticketing template file. You can get the latest Ticketing files from.
+[GitHub](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml)
+
+In v1.3.2, we have added support to handle mandatory custom fields of type - label & Select List (Single & multi choice), Number, Component system field, Paragraph, Read Only, Short text (plain text only). You can set mandatory field in any Ticketing Template.
+
+Example:
+```
+"Component":
+	{
+        	"value": "test",
+        	"customFieldId": "customfield_10036"
+	}
+```
+4. In config.json set the below parameters,
+   
+   i. logLevel -
+   In “Profile” section set log Level according to what information should be logged for each profile.
+   Example: "logLevel" : "INFO"
+
+   ii. resposeTimeout-
+   In “global” section replace “connectionRequestTimeOut” parameter with “resposeTimeout”. You can set the value upto 5 minutes.
+
+   iii. numberOfConcurrentTask -
+   In “moduleConfiguration” section set concurrent task for each profile to run jira client in multithreading mode. You can set value upto 5 concurrent tasks for each profile.
+   Example:
+   ```
+   "moduleConfiguration":{
+   	"HD":
+   		{
+   		"numberOfConcurrentTask": 2
+                },
+   	"WAS":
+   		{
+                "numberOfConcurrentTask": 2
+                },
+   	"CS-Container":
+   		{
+                "numberOfConcurrentTask": 2
+                },
+   	"CS-Image":
+   		{
+         	"numberOfConcurrentTask": 2
+                }
+   },
+   ```
+   iv. createTicketsOnlyForRunningContainer - 
+   This parameter is only applicable for CS-Image profile. In “CS-Image” profile section, set value to true to create image ticket for running container only.
+
+5. Restart your containers.
