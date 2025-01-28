@@ -204,3 +204,28 @@ Example:
    This parameter is only applicable for CS-Image profile. In “CS-Image” profile section, set value to true to create image ticket for running container only.
 
 5. Restart your containers.
+
+## Intructions to upgrade the App to v1.3.2.1
+Steps to upgrade to v1.3.2.1,
+1. Stop your Containers
+2. Delete **qualys_jira_connector.rdb** file from db directory.
+
+   Navigation - docker Volume > _data > db > **Delete qualys_jira_connector.rdb**
+4. Delete **knowledgebase.txt** file from checkpoint directory.
+
+   Navigation - docker Volume > _data > checkpoint > Delete **knowledgebase.txt**
+6. Update the latest images in docker-compose.yml. You can get the latest YAML file from [GitHub](https://github.com/QIntegration/Qualys-Jira-Connector).
+7. Restart your Containers.
+   
+### Why Do we Delete the Redis DB?
+When upgrading to a new Redis version, the existing database file (qualys_jira_connector.rdb) must be deleted. When you restart the Jira Connector after deletion, it automatically creates a new database file in the db directory. This process ensures that your connector starts with a fresh, compatible database aligned with the new Redis version.
+
+### Why Do we Delete the Checkpoint?
+After deleting the database file, we also need to manage the checkpoint to maintain data consistency. 
+Here's why:
+1. The checkpoint file (knowledgebase.txt) stores the last processed data point.
+2. Deleting this file allows the Jira Connector to reset its data collection process.
+3. When the Jira Connector restarts, a new knowledgebase.txt is created with a new checkpoint date.
+4. The connector starts pulling data from the new checkpoint date.
+
+**Important** - The Jira Connector comes with pre-bundled knowledgebase data from before the checkpoint date. This means you won't lose historical data during this process.
