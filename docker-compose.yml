@@ -2,6 +2,7 @@ version: "3.4"
 services:
     qualys-client-service:
         image: qualys/qualys-client-for-jira-integration:1.3.2.1
+        restart: always
         networks:
             - qualys-jira-connector
         volumes:
@@ -14,6 +15,7 @@ services:
 
     redis-client-service:
         image: qualys/redis-client-for-jira-integration:1.2.1
+        restart: always
         networks:
             - qualys-jira-connector
         ports:
@@ -23,6 +25,7 @@ services:
 
     jira-client-service:
         image: qualys/jira-client-for-jira-integration:1.3.2.1
+        restart: always
         networks:
             - qualys-jira-connector
         volumes:
