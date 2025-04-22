@@ -229,3 +229,11 @@ Here's why:
 4. The connector starts pulling data from the new checkpoint date.
 
 **Important** - The Jira Connector comes with pre-bundled knowledgebase data from before the checkpoint date. This means you won't lose historical data during this process.
+
+## Intructions to upgrade the App to v1.3.2.2
+To upgrade to v1.3.2.2
+1. Stop your Containers
+2. Update the latest images in docker-compose.yml. You can get the latest YAML file [here](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml).
+3. Restart your Containers.
+
+**Note**: This release contains updates to the Jira Client Image Only.
