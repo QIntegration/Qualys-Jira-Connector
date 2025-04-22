@@ -22,7 +22,7 @@ services:
           - qualys-jira-volume:/opt/qualys/common/jiraconnector/     
 
     jira-client-service:
-        image: qualys/jira-client-for-jira-integration:1.3.2.1
+        image: qualys/jira-client-for-jira-integration:1.3.2.2
         networks:
             - qualys-jira-connector
         volumes:
