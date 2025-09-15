@@ -237,3 +237,30 @@ To upgrade to v1.3.2.2
 3. Restart your Containers.
 
 **Note**: This release contains updates to the Jira Client Image Only.
+
+## Intructions to upgrade the App to v1.4.0
+### Jira Connector v1.4.0 – Support for New Atlassian Jira API
+
+#### What’s New
+* Added support for the new search API endpoints introduced by Atlassian Jira. [Ref](https://developer.atlassian.com/changelog/#)  
+* Ensures compatibility with Jira Cloud and ongoing API updates.  
+
+#### What Changed
+* Older API endpoints previously used by the connector are now deprecated by Atlassian. <br>
+* Connector logic has been updated to seamlessly work with the new API endpoints. <br>
+
+*Important Note – Jira Server / On-Premise* <br>
+* The new Jira APIs are not supported on Jira Server (On-Premise). <br>
+* We verified this on Jira Server v11.0.1 (latest as of 15 Sept 2025). <br>
+* Jira Server (OnPremise) API documentation still references the old APIs and does not indicate any deprecation: [Atlassian Jira Server REST API docs](https://developer.atlassian.com/server/jira/platform/rest/v11000/api-group-search). <br>
+* Hence, for Jira On-Premise deployments, the connector will continue to use the older APIs. <br>
+
+#### Action Required
+* Upgrade to v1.4.0 of the Jira Connector (qualys/jira-client-for-jira-integration) to avoid disruptions caused by deprecation of old API endpoints. [Refer upgrade instructions for more details](#upgrade-instructions-for-v1.4.0) <br>
+* No additional configuration is required post-upgrade. 
+ 
+### Upgrade Instructions for v1.4.0
+To Upgrade to v1.4.0 follow the instructions listed below,
+1. Stop your containers
+2. Update the latest images for 'jira-client-service' in docker-compose.yml as 'qualys/jira-client-for-jira-integration:1.4.0'. You can get the latest docker-compose.yml [here](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml)
+3. Restart your containers.
