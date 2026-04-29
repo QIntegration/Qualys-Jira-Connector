@@ -27,16 +27,11 @@ Qualys has extensive data of hosts and vulnerabilities detected on them, and thi
 
 Note: These upgrade instructions are provided in incremental manner. If you are using really old version of Jira connector, to make sure the connnector runs smoothly please check the upgrade instruction for other versions in [guide](https://docs.qualys.com/en/integration/jira_connector/#t=upgrade_connector_app%2Fupgrade_the_app.htm&rhsearch=upgrade) as well. This will prevent potential upgrade issues due to missing changes in config/templates.	
 
-## Intructions to upgrade the App to v1.4.0
-### Jira Connector v1.4.0 – Support for New Atlassian Jira API
+### Jira Connector v1.5.1 – Support for New Atlassian Jira API
 
 #### What’s New
-* Added support for the new search API endpoints introduced by Atlassian Jira. [Ref](https://developer.atlassian.com/changelog/#)  
+* Added support for Qualys OAuth Credential  
 * Ensures compatibility with Jira Cloud and ongoing API updates.  
-
-#### What Changed
-* Older API endpoints previously used by the connector are now deprecated by Atlassian. <br>
-* Connector logic has been updated to seamlessly work with the new API endpoints. <br>
 
 *Important Note – Jira Server / On-Premise* <br>
 * The new Jira APIs are not supported on Jira Server (On-Premise). <br>
@@ -44,10 +39,20 @@ Note: These upgrade instructions are provided in incremental manner. If you are 
 * Jira Server (OnPremise) API documentation still references the old APIs and does not indicate any deprecation: [Atlassian Jira Server REST API docs](https://developer.atlassian.com/server/jira/platform/rest/v11000/api-group-search). <br>
 * Hence, for Jira On-Premise deployments, the connector will continue to use the older APIs. <br>
 
-#### Action Required
-* Upgrade to v1.4.0 of the Jira Connector (qualys/jira-client-for-jira-integration) to avoid disruptions caused by deprecation of old API endpoints. [Refer upgrade instructions for more details](#upgrade-instructions-for-v1.4.0) <br>
-* No additional configuration is required post-upgrade. 
- 
+### Upgrade Instructions for v1.5.1
+To Upgrade to v1.5.0 follow the instructions listed below,
+1. Stop your containers
+2. Update the latest images in docker-compose.yml. You can get the latest YAML file [here](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml).
+3. Restart your Containers.
+
+
+### Upgrade Instructions for v1.5.0
+To Upgrade to v1.5.0 follow the instructions listed below,
+1. Stop your containers
+2. Update the latest images in docker-compose.yml. You can get the latest YAML file [here](https://github.com/QIntegration/Qualys-Jira-Connector/blob/main/docker-compose.yml).
+3. If you want to use the user-level Client ID and Client Secret for authentication, configure additional parameter in the Config.json file and then save the file. ref- [Jira-Connector v.1.5.0](https://docs.mp02.eng.sjc01.qualys.com/en/integration/jira_connector/1.5.1/whats_new/jira_connector_v1.5.0.htm).
+4. Restart your Containers.
+	
 ### Upgrade Instructions for v1.4.0
 To Upgrade to v1.4.0 follow the instructions listed below,
 1. Stop your containers
