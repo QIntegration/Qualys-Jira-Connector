@@ -12,7 +12,7 @@ services:
             - SPRING_REDIS_USER=default
             - SPRING_REDIS_PASSWORD=JiraConnectorRedisDB   
 
-redis-client-service:
+   redis-client-service:
         image: qualys/redis-client-for-jira-integration:1.2.3
         networks:
             - qualys-jira-connector
@@ -21,7 +21,7 @@ redis-client-service:
         volumes:
           - qualys-jira-volume:/opt/qualys/common/jiraconnector/         
 
-jira-client-service:
+   jira-client-service:
         image: qualys/jira-client-for-jira-integration:1.5.2
         networks:
             - qualys-jira-connector
